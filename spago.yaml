@@ -1,24 +1,10 @@
 package:
   name: webb-array
   dependencies:
-    - aff
-    - arrays
-    - console
-    - effect
-    - foldable-traversable
-    - maybe
-    - monad-loops
-    - prelude
-    - strings
-    - transformers
-    - tuples
-    - unsafe-coerce
-    - webb-refer
-    - webb-monad
-    - webb-mutex
-    - webb-stateful
-    - webb-random
-    - profunctor-lenses
+    - arrays: ">=7.3.0 <8.0.0"
+    - foldable-traversable: ">=6.0.0 <7.0.0"
+    - maybe: ">=6.0.0 <7.0.0"
+    - prelude: ">=6.0.2 <7.0.0"
   test:
     main: Test.Main
     dependencies:
@@ -26,6 +12,14 @@ package:
       - spec-discovery
       - spec-node
       - webb-test
+
+  publish:
+    version: 0.0.1
+    license: BSD-3-Clause
+    location:
+      githubOwner: mitchellandwebb
+      githubRepo: webb-array
+
 workspace:
   packageSet:
     registry: 69.3.0
@@ -37,4 +31,3 @@ workspace:
     webb-stateful: 0.0.2
     webb-random: 0.0.1
     webb-mutex: 0.0.4
-
