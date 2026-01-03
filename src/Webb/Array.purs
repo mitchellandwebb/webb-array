@@ -13,6 +13,7 @@ module Webb.Array
   , module P
   , reject
   , size
+  , dropWhileIncl, takeWhileIncl, dropWhileExcl, takeWhileExcl
   )
   where
 
@@ -62,3 +63,23 @@ canFindEq a vec = isJust (findEq a vec)
 
 reject :: forall a. (a -> Boolean) -> Array a -> Array a
 reject f vec = Array.filter (not <<< f) vec
+
+-- Drop while -- and then drop the item that didn't match.
+dropWhileIncl :: forall a. (a -> Boolean) -> Array a -> Array a
+dropWhileIncl f arr = let 
+  rest = arr # Array.dropWhile f >>> Array.drop 1
+  in rest
+  
+-- Take while -- and then take the item that didn't match as well.
+takeWhileIncl :: forall a. (a -> Boolean) -> Array a -> Array a
+takeWhileIncl f arr = let
+  taken = arr # Array.takeWhile f >>> Array.take 1
+  in taken
+
+-- Only drop the items that matched
+dropWhileExcl :: forall a. (a -> Boolean) -> Array a -> Array a
+dropWhileExcl = Array.dropWhile
+  
+-- Only take the items that matched
+takeWhileExcl :: forall a. (a -> Boolean) -> Array a -> Array a
+takeWhileExcl = Array.takeWhile
